@@ -1,6 +1,9 @@
 import React from 'react'
 import ReactDom from 'react-dom'
 
+/**
+ * 播放列表
+ */
 export default class FileLists extends React.Component {
   constructor (props) {
     super(props)

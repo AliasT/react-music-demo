@@ -5,13 +5,10 @@ import { toDataUrlFromBuffer, toDataUrl } from "./to-data-url"
 import Controls from "./controls"
 import InfoBar from "./info.js"
 import FileLists from "./file-lists"
+import PlayMode from "./play-mode"
+
 import "../sass/audio-player.scss"
 
-/**
- *
- * 处理文件拖放
- *
- */
 export default class FileInputController extends React.Component {
   constructor (props) {
     super(props)
@@ -91,10 +88,15 @@ export default class FileInputController extends React.Component {
     })
   }
 
+  handleModelChange (name) {
+    console.log(name)
+  }
+
   render () {
     return (
       <div className="file-input-controller" ref={ ele => this._ele = ele } >
         <FileLists files={this.state.files} onItemSelect={this.onMusicSelect.bind(this)}></FileLists>
+        <PlayMode handleModelChange={this.handleModelChange.bind(this)}></PlayMode>
         <audio autoPlay="true" controls="controls" ref="audio" src={this.state.src}></audio>
         <InfoBar { ...this.state.info }></InfoBar>
         <Controls
